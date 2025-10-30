@@ -7,13 +7,15 @@ function Show-Menu
     #cls
     Write-Host ""
     Write-Host "================ $Title ================"
-    Write-Host "1: 確認預設的 Azure 訂用帳戶"
-    Write-Host "2: 安裝和設定 Terraform"
-    Write-Host "21: Terraform 部署"
-	 Write-Host "22: 清理資源"
-    Write-Host "31: 部署容器執行個體"
-    Write-Host "32: 提取容器日誌"
+    Write-Host "11: 確認預設的 Azure 訂用帳戶"
+    Write-Host "21: 設定連接到 github 的帳戶名稱和郵件位址"
+    Write-Host "22: 從 github 下載專案"
+    Write-Host "31: 安裝和設定 Terraform"
+    Write-Host "32: Terraform 部署"
     Write-Host "33: 清理資源"
+    Write-Host "41: 部署容器執行個體"
+    Write-Host "42: 提取容器日誌"
+    Write-Host "43: 清理資源"
     Write-Host "Q: 離開"
 }
 
@@ -23,36 +25,37 @@ do
     $input = Read-Host "請選擇執行項目"
     switch ($input)
     {
-        '1'
+        '11'
         {
            #cls
            ''
            az account show
            ''
         }
-        '2'
+        '21'
         {
            #cls
            ''
-           #.\InstallTerraform.ps1
-           '判斷 Cloud Shell 中使用的 Terraform 版本'
-           terraform version
-           # https://developer.hashicorp.com/terraform/install
-           '下載目前的 Terraform 版本'
-           curl -O https://releases.hashicorp.com/terraform/1.13.4/terraform_1.13.4_linux_amd64.zip
-           '將檔案解壓縮'
-           unzip terraform_1.13.4_linux_amd64.zip
-           '建立bin目錄'
-           mkdir bin
-           '將 terraform 檔案移至 bin 目錄'
-           mv terraform bin/ 
-           '確認下載的 Terraform 版本在系統搜尋路徑中位於第一順序'
-           terraform version
-           '刪除下載壓縮檔'
-           rm terraform_1.13.4_linux_amd64.zip
+           git config --global user.name SarahMon-Hub
+           git config --global user.email sarahmon@ymail.com
+           git config --global --list
            ''
         }
-        '21'
+        '22'
+        {
+           #cls
+           ''
+           git clone https://github.com/SarahMon-Hub/sudo.git
+           ''
+        }
+        '31'
+        {
+           #cls
+           ''
+           .\InstallTerraform.ps1
+           ''
+        }
+        '32'
         {
             #cls
            ''
@@ -66,17 +69,17 @@ do
             terraform output -raw container_ipv4_address
            ''
         }
-        '22'
+        '33'
         {
            #cls
            ''
-			  '執行 terraform 計劃 並指定 destroy 旗標'
-			  terraform plan -destroy -out main.destroy.tfplan
-			  '執行 terraform apply 來應用執行計劃'
-			  terraform apply main.destroy.tfplan
+           '執行 terraform 計劃 並指定 destroy 旗標'
+           terraform plan -destroy -out main.destroy.tfplan
+           '執行 terraform apply 來應用執行計劃'
+           terraform apply main.destroy.tfplan
            ''
         }
-        '31'
+        '41'
         {
            #cls
            ''
@@ -88,7 +91,7 @@ do
            az container show --resource-group SudoGroup --name sudocntr --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
            ''
         }
-        '32'
+        '42'
         {
            #cls
            ''
@@ -98,7 +101,7 @@ do
            #az container attach --resource-group SudoGroup --name sudocntr
            ''
         }
-        '33'
+        '43'
         {
            #cls
            ''
