@@ -52,31 +52,21 @@ do
         {
            #cls
            ''
-           .\InstallTerraform.ps1
+           .\sudo\InstallTerraform.ps1
            ''
         }
         '32'
         {
-            #cls
+           #cls
            ''
-           '初始化 Terraform'
-            terraform init -upgrade
-            '建立 Terraform 執行計劃'
-            terraform plan -out main.tfplan
-            '套用 Terraform 執行計畫'
-            terraform apply main.tfplan
-            '確認結果'
-            terraform output -raw container_ipv4_address
+           .\sudo\DeploymentPlan.ps1
            ''
         }
         '33'
         {
            #cls
            ''
-           '執行 terraform 計劃 並指定 destroy 旗標'
-           terraform plan -destroy -out main.destroy.tfplan
-           '執行 terraform apply 來應用執行計劃'
-           terraform apply main.destroy.tfplan
+           .\sudo\DestroyPlan.ps1
            ''
         }
         '41'
