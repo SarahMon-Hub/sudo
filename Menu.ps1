@@ -1,18 +1,21 @@
 function Show-Menu
 {
-    param
-    (
-        [string]$Title = 'Cloud Shell Menu'
-    )
+    #param
+    #(
+    #    [string]$Title = 'Cloud Shell Menu'
+    #)
     #cls
     Write-Host ""
-    Write-Host "================ $Title ================"
+    Write-Host "================ Cloud Shell Menu ================"
     Write-Host "11: 確認預設的 Azure 訂用帳戶"
+    Write-Host "----------------       github     ----------------"
     Write-Host "21: 設定連接到 github 的帳戶名稱和郵件位址"
     Write-Host "22: 複製遠端儲存庫"
+    Write-Host "----------------     Terraform   ----------------"
     Write-Host "31: 安裝和設定 Terraform"
     Write-Host "32: Terraform 部署"
     Write-Host "33: 清理資源"
+    Write-Host "----------------     Container   ----------------"
     Write-Host "41: 部署容器執行個體"
     Write-Host "42: 提取容器日誌"
     Write-Host "43: 清理資源"
@@ -52,7 +55,7 @@ do
         {
            #cls
            ''
-           .\sudo\InstallTerraform.ps1
+           .\InstallTerraform.ps1
            ''
         }
         '32'
