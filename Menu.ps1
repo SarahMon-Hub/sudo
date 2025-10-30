@@ -9,7 +9,7 @@ function Show-Menu
     Write-Host "================ $Title ================"
     Write-Host "11: 確認預設的 Azure 訂用帳戶"
     Write-Host "21: 設定連接到 github 的帳戶名稱和郵件位址"
-    Write-Host "22: 從 github 下載專案"
+    Write-Host "22: 複製遠端儲存庫"
     Write-Host "31: 安裝和設定 Terraform"
     Write-Host "32: Terraform 部署"
     Write-Host "33: 清理資源"
