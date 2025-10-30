@@ -59,14 +59,14 @@ do
         {
            #cls
            ''
-           .\sudo\DeploymentPlan.ps1
+           .\DeploymentPlan.ps1
            ''
         }
         '33'
         {
            #cls
            ''
-           .\sudo\DestroyPlan.ps1
+           .\DestroyPlan.ps1
            ''
         }
         '41'
