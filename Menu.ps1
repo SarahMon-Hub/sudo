@@ -39,8 +39,10 @@ do
         {
            #cls
            ''
-           git config --global user.name SarahMon-Hub
-           git config --global user.email sarahmon@ymail.com
+           $username = Read-Host "請輸入帳戶名稱"
+			  git config --global user.name $username
+           $useremail = Read-Host "請輸入帳戶名稱"
+           git config --global user.email $useremail
            git config --global --list
            ''
         }
@@ -48,7 +50,9 @@ do
         {
            #cls
            ''
-           git clone https://github.com/SarahMon-Hub/sudo.git
+           $username = Read-Host "請輸入帳戶名稱儲存庫"
+			  $repository = Read-Host "請輸入儲存庫"
+           git clone https://github.com/$username/$repository.git
            ''
         }
         '31'
